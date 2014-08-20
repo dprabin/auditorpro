@@ -19,7 +19,7 @@ public class NonBusinessChargable extends Incomesource {
 
     @Override
     public Double getTotalAmount() {
-        return (double) 0;
+        return gainLossFromShareSecurity;
     }
     
     @ManyToMany(cascade = CascadeType.ALL)
