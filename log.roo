@@ -1,0 +1,244 @@
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-07-10 12:24:11
+project --topLevelPackage com.stm --projectName AuditorPro --java 6 --packaging WAR
+
+jpa setup --provider HIBERNATE --database MYSQL --userName root --password root --hostName localhost --databaseName auditorpro
+
+entity jpa --class ~.domain.taxpayer.incomesource.Incomesource --abstract true --activeRecord false --table incomesource --identifierField incomeId
+
+entity jpa --class ~.domain.taxpayer.incomesource.Investment --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+entity jpa --class ~.domain.taxpayer.incomesource.Employment --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+entity jpa --class ~.domain.taxpayer.incomesource.WindFallGain --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+entity jpa --class ~.domain.taxpayer.incomesource.ExemptIncome --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+entity jpa --class ~.domain.taxpayer.incomesource.BusinessIncome --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+entity jpa --class ~.domain.taxpayer.incomesource.NonBusinessChargable --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+entity jpa --class ~.domain.taxpayer.incomesource.ExemptIncome --extends ~.domain.taxpayer.incomesource.Incomesource --activeRecord false --testAutomatically --table incomesource --identifierField incomeId
+
+field number --fieldName totalAmount --type java.lang.Double --class ~.domain.taxpayer.incomesource.Incomesource --notNull true
+field string --fieldName incomeSourceName --class ~.domain.taxpayer.incomesource.Incomesource
+field string --fieldName incomeSourceDescription --class ~.domain.taxpayer.incomesource.Incomesource
+
+entity jpa --class ~.domain.taxpayer.TaxPayer --abstract  true --activeRecord false --table taxpayer --identifierField taxPayerId
+entity jpa --class ~.domain.taxpayer.business.Business --abstract  true --activeRecord false --table taxpayer --identifierField taxPayerId
+entity jpa --class ~.domain.taxpayer.naturalperson.NaturalPerson --abstract  true --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.Person
+
+entity jpa --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares --activeRecord false --testAutomatically 
+entity jpa --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand --activeRecord false --testAutomatically 
+
+
+entity jpa --class ~.domain.taxpayer.business.Trust --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.ITIndustry --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.TaxFree --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.Partnership --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.SpecialIndustry --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.ForeignPermanentEstablishment --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.PermanentEstablishmentOfOrganization --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.InsuranceCompany --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.Company --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+entity jpa --class ~.domain.taxpayer.business.Bank --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Business
+
+entity jpa --class ~.domain.taxpayer.naturalperson.type.NaturalPersonType --abstract --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.NaturalPerson
+entity jpa --class ~.domain.taxpayer.naturalperson.type.Individual --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.type.NaturalPersonType
+entity jpa --class ~.domain.taxpayer.naturalperson.type.Spouse --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.type.NaturalPersonType
+entity jpa --class ~.domain.taxpayer.naturalperson.type.Widow --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.type.NaturalPersonType
+entity jpa --class ~.domain.taxpayer.naturalperson.type.Propritership --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.NaturalPerson
+
+entity jpa --class ~.domain.taxpayer.naturalperson.residency.Residency --abstract --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.NaturalPerson
+entity jpa --class ~.domain.taxpayer.naturalperson.residency.Resident --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.residency.Residency
+entity jpa --class ~.domain.taxpayer.naturalperson.residency.NonResident --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.naturalperson.residency.Residency
+
+entity jpa --class ~.domain.taxpayer.business.taxfree.SocialReligiousEducational --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.TaxFree
+entity jpa --class ~.domain.taxpayer.business.taxfree.SportsOrganization --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.TaxFree
+entity jpa --class ~.domain.taxpayer.business.taxfree.PoliticalParty --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.TaxFree
+entity jpa --class ~.domain.taxpayer.business.taxfree.VdcDdc --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.TaxFree
+
+entity jpa --class ~.domain.taxpayer.business.company.Company --abstract --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.Company
+entity jpa --class ~.domain.taxpayer.business.company.Partnership --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.company.Company
+entity jpa --class ~.domain.taxpayer.business.company.ForeignCompany --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.company.Company
+entity jpa --class ~.domain.taxpayer.business.company.CorporateUnion --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.company.Company
+entity jpa --class ~.domain.taxpayer.business.company.OtherForeignInstitution --activeRecord false --table taxpayer --identifierField taxPayerId --extends ~.domain.taxpayer.business.company.Company
+
+
+entity jpa --class ~.domain.Auditor --abstract --activeRecord false --table auditor --identifierField auditorId
+entity jpa --class ~.domain.Address --activeRecord false --table address --identifierField abstractId
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-07-11 03:06:10entity jpa --class ~.domain.taxpayer.business.taxfree.SocialReligiousEducational --activeRecord false --table 
+
+//domain.address - field for address
+field string --fieldName houseNoBlockNo --class ~.domain.Address
+field string --fieldName streetTole --class ~.domain.Address
+field string --fieldName wardNo --class ~.domain.Address
+field string --fieldName villageArea --class ~.domain.Address
+field string --fieldName typeOfVDCNP --class ~.domain.Address
+field string --fieldName district --class ~.domain.Address
+field string --fieldName zoneState --class ~.domain.Address
+
+//domain.person - field for person
+field other --type ~.domain.Address --fieldName address --class ~.domain.Person
+field string --fieldName legalName --class ~.domain.Person
+field string --fieldName panNo --class ~.domain.Person
+field string --fieldName iroName --class ~.domain.Person
+
+//domain.Users - Fields for Users
+field string --fieldName userID --class ~.domain.Users
+field string --fieldName userName --class ~.domain.Users
+field string --fieldName password --class ~.domain.Users
+field string --fieldName lastLogon --class ~.domain.Users
+field string --fieldName userGroup --class ~.domain.Users
+field string --fieldName email --class ~.domain.Users
+field string --fieldName legalName --class ~.domain.Auditor
+field string --fieldName registrationNo --class ~.domain.Auditor
+field string --fieldName panNo --class ~.domain.Auditor
+field other --fieldName address --class ~.domain.Auditor --type ~.domain.Address
+field string --class ~.domain.Auditor --fieldName licenseNo 
+field set --fieldName taxPayers --cardinality ONE_TO_MANY --type ~.domain.taxpayer.TaxPayer --class ~.domain.Auditor 
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-07-21 16:34:04
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-07-24 14:38:47
+
+//domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName salaryWages --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName leavePay --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName overtimePayment --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName fees --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName prizesGifts --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName bonuses --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName paymentForOtherFacilitations --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName commissions --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName dearnessAllowances --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName costOfLivingAllowances --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName rentAllowances --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName entertainmnetTransportationAllowances --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName otherPersonalAllowances --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName dischargeOrReimbursementsOfPersonalCosts --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName paymentToAgreementToAnyConditionsOfEmployment --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName paymentForRedundancyOrLossOrTerminationOfEmployment --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName retirementContributionsAndRetirementPayments --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName otherPaymentsMadeInRespectOfEmployment --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName fringeBenefitForVehicleFacility --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName fringeBenefitForHouseFacility --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName fringeBenefitForHousekeeperOrDomesticAssistant --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName fringeBenefitForRefreshmentEntertainment --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName fringeBenefitForWaterElectricityTelephoneUtilities --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName differenceOfActualInterestAndInterestAsPerMarketRate --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName otherAmountsIncludedInRemuneration --class ~.domain.taxpayer.incomesource.Employment
+field number --type java.lang.Double --fieldName total --class ~.domain.taxpayer.incomesource.Employment
+
+//domain.taxpayer.incomesource.investment
+field number --type java.lang.Double --fieldName dividends --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName gainFromInvestmentInsuranceOtherThanFinalWithholding --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName interestsOtherThanFinalWithholding --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName rentOtherThanFinalWithholding --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName pymentForNaturalResourceOtherThanFinalWithholding --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName royalties --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName unapprovedRetirementFundOtherThanWithholding --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName disposalOfDepreciableAssets --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName giftsReveivedByPersonInRespectOfInvestment --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName retirementPaymentAlongWithPaymentsRetirementContributions --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName amountsDerivedAsConsiderationForAcceptingRestrictionOfInvestment --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName amountsIncludedByReasonOfTiming --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName excessAmountReceivedByReasonOfExchangeRate --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName recoveredAmountOfBadDebtsDeductedEarlier --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName differenceOfActualInterestAndInterestAsPerMarketRate --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName amountsPaidToThirdPersonInsteadOfActualPayee --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName amountsDerivedFromJointOwnershipInvestment --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName amountsDerivedAsCompensation --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName otherAmountsIncludedInProfitAndGains --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName totalOfAbove19Rows --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName Interest --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName repairsAndImprovements --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName depreciation --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName otherDeductibleExpenses --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName totalDeductibleExpenses --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName lossesTransferredFromOtherBusinessOrInvestment --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName carriedForwardOfUnrelivedBusinessLosses --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName totalDeductibleLoses --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName totalDeductions --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName incomeOrLossFromInvestment --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName lossTransferredToOtherInvestmentIncome --class ~.domain.taxpayer.incomesource.Investment
+field number --type java.lang.Double --fieldName totalIncomeOrLossFromInvestment --class ~.domain.taxpayer.incomesource.Investment
+
+//domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName serviceFees --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsDerivedFromDisposalOfTradingStock --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName netGainsFromDisposalOfPersonBusinessAssets --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsTreatedAsDerivedFromDepreciableAssets --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName giftsReceivedByThePersonInRespect --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsDerivedAsConsiderationForAcceptingRestrictionOnCapacityToConductBusiness --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsDerivedFromInvestmentsEffectivelyConnectedWithBusiness --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsIncludedByReasonOfChangeInAccountingSystem --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsIncludedByReasonOfTiming --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName excessAmountReceivedByReasonOfExchangeRate --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName recoveredAmountOfBadDebtsDeductedEarlier --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsIncludedAsPerContractOfCompletionBasis --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName differenceOfActualInterestAndInterestAsPerMarketRate --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsPaidToThirdPerson --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName amountsDerivedAsCompensation --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName otherAmountsIncludedInProfitAndGains --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName totalInclusions --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName interest --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName costOfTradingStocks --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName repairsAndImprovements --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName pollutionControl --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName researchAndDevelopment --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName depreciation --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName deductibleReserve --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName otherDeductibleExpense --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName taxPaidOutsideNepal --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName totalDeductibleExpense --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName losesTransferredFromOtherBusiness --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName carriedForwardOfUnrelievedLosses --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName totalDeductibleLoss --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName totalDeduction --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName incomeOrLossFromBusiness --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName lossTransferredToOtherBusiness --class ~.domain.taxpayer.incomesource.BusinessIncome
+field number --type java.lang.Double --fieldName totalIncomeOrLossFromBusiness --class ~.domain.taxpayer.incomesource.BusinessIncome
+
+//domain.taxpayer.incomesource.WindFallGain
+field number --type java.lang.Double --fieldName lottery --class ~.domain.taxpayer.incomesource.WindFallGain
+field number --type java.lang.Double --fieldName gift --class ~.domain.taxpayer.incomesource.WindFallGain
+field number --type java.lang.Double --fieldName prize --class ~.domain.taxpayer.incomesource.WindFallGain
+field number --type java.lang.Double --fieldName baksis --class ~.domain.taxpayer.incomesource.WindFallGain
+field number --type java.lang.Double --fieldName awardForWinning --class ~.domain.taxpayer.incomesource.WindFallGain
+field number --type java.lang.Double --fieldName other --class ~.domain.taxpayer.incomesource.WindFallGain
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-07-24 17:44:33
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-08-11 16:18:22
+
+//domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field string --fieldName nameOfEntity --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field string --fieldName disposalProcedure --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field number --type java.lang.Double --fieldName noOfDisposedShares --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field number --type java.lang.Double --fieldName marketValueOfShares --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field number --type java.lang.Double --fieldName incomingsFromDisposal --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field number --type java.lang.Double --fieldName outgoingsForDisposal --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field number --type java.lang.Double --fieldName gainOrLoss --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field string --fieldName nameOfNewOwner --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field string --fieldName addressOfNewOwner --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field string --fieldName panOfNewOwner --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+field boolean --fieldName transferWithinThreeGeneration --class ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares
+
+//domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+
+field string --fieldName addressOfBuildingOrLand --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field string --fieldName disposalProceduce --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field number --type java.lang.Double --fieldName marketValue --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field number --type java.lang.Double --fieldName incomingsFromDisposal --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field number --type java.lang.Double --fieldName outgoingsForDisposal --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field number --type java.lang.Double --fieldName gainOrLoss --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field string --fieldName nameOfNewOwner --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field string --fieldName addressOfNewOwner --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field string --fieldName panOfNewOwner --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field boolean --fieldName transferWithinThreeGeneration --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field boolean --fieldName lessThanOneRopani --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field boolean --fieldName salesValueLessThanThirtyLakh --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+field boolean --fieldName ownedOrResidentLessThanTenYear --class ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand
+
+//domain.taxpayer.incomesource.NonBusinessChargable
+field set --type ~.domain.taxpayer.incomesource.nonbusinesschargable.Shares --fieldName shares --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field set --type ~.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLand --fieldName buildingLand --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field number --type java.lang.Double --fieldName gainOrLossFromShares --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field number --type java.lang.Double --fieldName gainOrLossFromBuildingLand --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field number --type java.lang.Double --fieldName lossTransferredFromOtherBusinessInvestmentsThisYear --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field number --type java.lang.Double --fieldName carriedForwardOfUnrelivedInvestmentFromPreviousYear --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field number --type java.lang.Double --fieldName totalDeductibleLosses  --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+field number --type java.lang.Double --fieldName netGainsOrLoss  --class ~.domain.taxpayer.incomesource.NonBusinessChargable
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-08-12 11:52:43
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-08-12 15:06:46
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-08-13 12:14:40

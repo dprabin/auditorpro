@@ -1,0 +1,23 @@
+<aspectj>
+<aspects>
+<aspect name="com.stm.domain.taxpayer.incomesource.InvestmentIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.EmploymentIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.ExemptIncomeDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.nonbusinesschargable.SharesDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.IncomeSourceFactoryDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLandDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.IncomeSourceFactoryIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.WindFallGainIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.BusinessIncomeDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.BusinessIncomeIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.NonBusinessChargableIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.InvestmentDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.EmploymentDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.NonBusinessChargableDataOnDemand_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.nonbusinesschargable.BuildingLandIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.ExemptIncomeIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.nonbusinesschargable.SharesIntegrationTest_Roo_Configurable"/>
+<aspect name="com.stm.domain.taxpayer.incomesource.WindFallGainDataOnDemand_Roo_Configurable"/>
+</aspects>
+</aspectj>
+
