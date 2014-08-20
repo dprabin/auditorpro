@@ -43,7 +43,7 @@ public class BusinessIncome extends Incomesource {
     //this function always return positive or 0 
     public Double calculateLossTransferredToOtherBusiness(){
     	if(this.incomeOrLossFromBusiness<0){
-        	this.lossTransferredToOtherBusiness = abs(this.incomeOrLossFromBusiness);
+        	this.lossTransferredToOtherBusiness = -this.incomeOrLossFromBusiness;
     	} else {
     		this.lossTransferredToOtherBusiness = (double) 0;
     	}
